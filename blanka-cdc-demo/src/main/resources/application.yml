@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+# =====================================================================
+# 极简接入示例（方式A）：零 blanka.cdc yaml 配置
+# 1. 业务原有 rocketmq 配置，blanka 自动拾取 namesrv-addr / producer-group
+# 2. canal 地址通过环境变量注入：CANAL_SERVER_ADDR=127.0.0.1:11111
+# 3. （可选）CANAL_DESTINATION 覆盖 canal destination，默认 example
+# =====================================================================
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: biz_producer_group
+
+# 方式B：局部自定义配置示例（按需打开）
+# blanka:
+#   cdc:
+#     auto-topic-prefix: "medical_blanka_"
+#     skip-ddl: false
+#     route-rules:
+#       - table-pattern: "db_order.order_pay"
+#         topic: "pay_topic"
+#         tag: "pay"

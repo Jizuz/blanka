@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.blanka.cdc</groupId>
+    <artifactId>blanka-cdc-starter-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>blanka-cdc-starter-parent</name>
+    <description>blanka: MySQL Binlog to RocketMQ lightweight CDC starter for SpringBoot3</description>
+
+    <modules>
+        <module>blanka-cdc-autoconfigure</module>
+        <module>blanka-cdc-spring-boot-starter</module>
+        <module>blanka-cdc-demo</module>
+    </modules>
+
+    <properties>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <canal.client.version>1.1.7</canal.client.version>
+        <rocketmq-client.version>5.3.0</rocketmq-client.version>
+        <rocketmq-spring.version>2.3.1</rocketmq-spring.version>
+        <fastjson2.version>2.0.49</fastjson2.version>
+        <hutool.version>5.8.27</hutool.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- inner modules -->
+            <dependency>
+                <groupId>com.blanka.cdc</groupId>
+                <artifactId>blanka-cdc-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.blanka.cdc</groupId>
+                <artifactId>blanka-cdc-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- canal tcp client -->
+            <dependency>
+                <groupId>com.alibaba.otter</groupId>
+                <artifactId>canal.client</artifactId>
+                <version>${canal.client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.otter</groupId>
+                <artifactId>canal.protocol</artifactId>
+                <version>${canal.client.version}</version>
+            </dependency>
+            <!-- rocketmq -->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq-spring.version}</version>
+            </dependency>
+            <!-- json -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <!-- utils -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
